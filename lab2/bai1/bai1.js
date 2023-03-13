@@ -1,7 +1,7 @@
 
 let a = prompt("Nhập giá trị của a:");
-    let b = prompt("Nhập giá trị của b:");
-    let c = prompt("Nhập giá trị của c:");
+let b = prompt("Nhập giá trị của b:");
+let c = prompt("Nhập giá trị của c:");
 
 // Chuyển đổi kiểu dữ liệu của a, b, c từ chuỗi sang số
 a = parseFloat(a);
