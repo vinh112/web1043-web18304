@@ -1,11 +1,19 @@
 let daysOfWeek = ["Tue", "Thu", "Sat", "Nine"];
 
-// Thêm các phần tử vào mảng
-daysOfWeek.unshift("Mon");
-daysOfWeek.splice(2, 0, "We");
-daysOfWeek.splice(5, 0, "Fri", "Sun");
+// Thêm các phần tử mới vào mảng
+daysOfWeek.push("Mon", "Wed", "Fri", "Sun");
 
-// Xóa phần tử "Nine" khỏi mảng
-daysOfWeek.splice(3, 1);
+// Tìm index của phần tử "Nine" và xóa nó
+let index = daysOfWeek.indexOf("Nine");
+if (index !== -1) {
+  daysOfWeek.splice(index, 1);
+}
 
-console.log(daysOfWeek); // Kết quả: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+// Sắp xếp mảng theo thứ tự đúng
+daysOfWeek.sort(function(a, b) {
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  return days.indexOf(a) - days.indexOf(b);
+});
+
+console.log(daysOfWeek); // ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+document.write(daysOfWeek)
