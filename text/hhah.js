@@ -17,7 +17,7 @@ function giatritruyenvao(buton) {
       giatri1 = "";
       giatri2 = "";
      
-      resultInput.value = "0";
+      resultInput.value = "";
       return;
     }
 

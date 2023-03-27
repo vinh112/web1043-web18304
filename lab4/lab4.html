@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Student{
+            //hàm tạo,của đối tượng
+     constructor (id, first_name, last_name, class_id,
+                  email, phone_number,dob){
+      this.id=id;
+      this.first_name=first_name;
+      this.last_name = last_name;
+      this.class_id = class_id;
+      this.email = email;
+      this.phone_number = phone_number;
+      this.dob = dob;
+                  }
+
+
+    getFullName() {//Phương thức để trả về họ tên đầy đủ(template)
+    return `${this.last_name} ${this.first_name}`;
+  }
+
+
+  getAgeInYears() {//Phương thức tính số tuỏi theo năm
+    const now = new Date();
+    const diff = now.getTime() - this.dob.getTime();
+    const ageInYears = diff / (1000 * 60 * 60 * 24 * 365);
+    return Math.floor(ageInYears);
+  }
+
+
+
+
+  getAgeInDays() {//Phương thức để tính số tuoỏi hiện tại 
+  const now = new Date();
+  const diff = now.getTime() - this.dob.getTime();
+  const ageInDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+  return ageInDays;//trả về số tuổi Tinh theo ngày
+  }
+}
+const students = [
+    new Student(1,'Vinh','Huỳnh Vinh',01,'qh321@gmail.com','0336251778' ,new Date('2004-05-24')),
+    new Student(2, 'Vĩ','Dương Gia',02,'vingue1@gmail.com','0336355412' ,new Date('2004-06-2')),
+    new Student(3, 'Đại','Huỳnh Minh',03,'vinh321@gmail.com','0336251778' ,new Date('2004-03-24')),
+    new Student(4,'Thắng','Huỳnh Minh',04,'qhvinh11@gmail.com','0336251778' ,new Date('2004-05-24')),
+    new Student(5, 'Di','Huỳnh Văn',05,'vinhhaha11@gmail.com','0336251778' ,new Date('2004-05-24'))];
+
+
+//tạo  new array
+const sortedStudents = students.sort((a, b) => a.getAgeInDays() - b.getAgeInDays());
+
+// in ra student information
+console.log('Danh sách sinh viên theo thứ tự số tuổi tăng dần:');
+for (let student of sortedStudents) {
+    console.log(`ID: ${student.id}, 
+             Họ và tên: ${student.getFullName()}, 
+             Tuổi (theo năm): ${student.getAgeInYears()}, 
+             Tuổi (theo ngày): ${student.getAgeInDays()},
+             Email:${student.email},
+             NumberPhone:${student.phone_number}`);
+}
+const windowWidth = window.innerWidth;
+const windowHeight = window.innerHeight;
+
+document.write(`Width: ${windowWidth}px, 
+Height: ${windowHeight}px`);
+
+
+    
+        
+    </script>
+</body>
+</html>

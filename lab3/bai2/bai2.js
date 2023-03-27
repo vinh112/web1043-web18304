@@ -1,8 +1,9 @@
 // Khai báo biến giatri1, giatri2 và pt để lưu trữ các giá trị và toán tử
-let giatri1;
-let giatri2;
+let giatri1 = "";
+let giatri2 = "";
+let pt = "";
 
-let pt;
+
 // Hàm được gọi khi nhấn vào một nút trên bàn phím
 function giatritruyenvao(buton) {
   // Lấy giá trị được hiển thị trên nút được nhấn
@@ -16,7 +17,7 @@ function giatritruyenvao(buton) {
     if (presedValue == 'C') {
       giatri1 = "";
       giatri2 = "";
-     
+      pt = "";
       resultInput.value = "";
       return;
     }
@@ -25,45 +26,45 @@ function giatritruyenvao(buton) {
     if (presedValue == '=') {
       const result = preform(giatri1, giatri2, pt);
       resultInput.value = result;
-      giatri1 = "";
+      giatri1 = result;
       giatri2 = "";
-     
-    } else {
-      // Nếu giá trị nhấn là một toán tử khác, lưu vào biến pt
-      pt = presedValue;
+      pt = "";
+      return;
+    }
+
+    // Nếu giá trị nhấn là một toán tử (+, -, *, /), lưu giá trị vào biến pt
+    pt = presedValue;
+
+    // Nếu giá trị giatri1 chưa tồn tại, lưu giá trị hiện tại vào giatri1
+    if (!giatri1) {
+      giatri1 = resultInput.value;
+      resultInput.value = "";
     }
   } else {
-    // Nếu giá trị nhấn là một số
-    if (pt) {
-      // Nếu biến pt có giá trị, lưu giá trị vào biến giatri2
-      giatri2 += presedValue;
-      resultInput.value = giatri2;
-    } else {
-      // Nếu biến pt chưa có giá trị, lưu giá trị vào biến giatri1
+    
+    if (!pt) {
       giatri1 += presedValue;
       resultInput.value = giatri1;
+    } else {
+      giatri2 += presedValue;
+      resultInput.value = giatri2;
     }
+  }
+  // Hàm thực hiện phép tính toán
+function preform(a, b, operator) {
+  const num1 = parseFloat(a);
+  const num2 = parseFloat(b);
+
+  switch (operator) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case '*':
+      return num1 * num2;
+    case '/':
+      return num1 / num2;
   }
 }
 
-// Hàm thực hiện phép tính dựa trên các giá trị và toán tử được lưu trữ trong giatri1, giatri2 và pt
-function preform(giatri1, giatri2, otor) {
-  // Chuyển đổi giá trị giatri1 và giatri2 thành kiểu số
-  number1 =Number(giatri1);
-   number2 = Number(giatri2);
-
-  // Nếu giá trị của giatri1 hoặc giatri2 không phải là số, trả về NaN
-  
-
-  // Thực hiện phép tính dựa trên toán tử và hai giá trị
-  switch (otor) {
-    case '+':
-      return number1 + number2;
-    case '-':
-      return number1 - number2;
-    case '*':
-      return number1 * number2;
-    case '/':
-      return number1 / number2;
-  }
 }
