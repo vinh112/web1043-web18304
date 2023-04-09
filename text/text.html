@@ -1,37 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .input{
+      display: flex;
+      flex-direction: column;
+
+    }
+    .inputText{
+      background-color: #e7a9a9;
+      border: #fff;
+      outline: none;
+    }
+    #iput1 , #iput2 {
+     
+      margin: 30px;
+      height: 30px;
+    
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px 0px rgba(10, 10, 10, 0.3) ;
+    }
+   
+ .inputhover{
+  background-color: #e4dddd;
+  border:  2px solid #d41717;
+ 
+ }
+  </style>
 </head>
 <body>
-    <div id="countdown"></div>
-<button onclick="startCountdown()">Start Countdown</button>
-<script>let startTime;
-    let endTime;
-    let intervalId;
-    
-    function startCountdown() {
-      const minutes = 30; // số phút đếm ngược
-      startTime = Date.now();
-      endTime = startTime + minutes * 60 * 1000;
-      intervalId = setInterval(updateCountdown, 1000);
-    }
-    
-    function updateCountdown() {
-      const timeLeft = endTime - Date.now();
-      const minutesLeft = Math.floor(timeLeft / 1000 / 60);
-      const secondsLeft = Math.floor(timeLeft / 1000) % 60;
-      const countdownElement = document.getElementById('countdown');
-      countdownElement.innerText = `${minutesLeft}:${secondsLeft.toString().padStart(2, '0')}`;
-    
-      if (timeLeft <= 0) {
-        clearInterval(intervalId);
-        countdownElement.innerText = "Time's up!";
-      }
-    }
-    </script>
+<div class="input">
+  <input class="inputText" id="iput1" placeholder="1" type="text" >
+  <input  class="inputText" id="iput2" type="text" placeholder="2">
+
+</div>
+
 </body>
+<script>
+let usename= document.getElementById('iput1');
+let pass=document.getElementById("iput2");
+
+
+
+usename.addEventListener("focus", ()=> {
+ usename.classList.add("inputhover");
+ 
+}) ;
+usename.addEventListener("blur", ()=> {
+ usename.classList.remove("inputhover");
+ 
+}) ;
+
+
+pass.addEventListener("focus", ()=> {
+  pass.classList.add("inputhover");
+ 
+}) ;
+pass.addEventListener("blur", ()=> {
+  pass.classList.remove("inputhover");
+ 
+}) ;
+
+
+
+</script>
 </html>

@@ -1,0 +1,26 @@
+.wraper{
+    background-color: antiquewhite;
+    width: fit-content;
+    padding: 20px;
+    margin: auto;
+}
+.body{
+    display: flex;
+    flex-direction: row;
+}
+.left{
+    border: 5px solid ;
+    width: 100px;
+    margin: 20px;
+    height: 200px;
+}
+.right{
+   
+margin: 20px;
+
+}
+.text{
+ border: 2px dashed #8a8a8a;
+ width: 50px;
+ text-align: center;
+}
